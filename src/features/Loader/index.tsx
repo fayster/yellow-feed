@@ -13,5 +13,5 @@ export default () => {
 		<LoaderContainer>
 			<img src={ Gif } />
 		</LoaderContainer>
-	)
+	);
 };
