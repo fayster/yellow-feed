@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"module": "es6",
+		"target": "es6",
+		"jsx": "react",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"lib": ["dom", "es2017", "es2015", "es2015.promise"]
+	},
+	"include": [
+		"src/index.tsx",
+		"types/custom.d.ts"
+	],
+	"exclude": ["node_modules"]
+}
