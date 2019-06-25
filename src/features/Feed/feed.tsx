@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StateProps, DispatchProps } from './types';
 import Messages from '../Messages';
 import Loader from "../Loader";
@@ -8,20 +8,15 @@ export const FeedContainer = styled.div`
 	width: 100%;
 `;
 
-class Feed extends React.Component<StateProps & DispatchProps> {
-	componentDidMount() {
-		this.props.getMessages();
-	}
+const Feed: React.FC<StateProps & DispatchProps> = ({ getMessages, isLoading }) => {
+	useEffect(() => { getMessages(); }, []);
 
-	render() {
-		return (
-			<FeedContainer>
-				{ this.props.isLoading && <Loader /> }
-				{ !this.props.isLoading && <Messages /> }
-			</FeedContainer>
-
-		);
-	}
-}
+	return (
+		<FeedContainer>
+			{ isLoading && <Loader /> }
+			{ !isLoading && <Messages /> }
+		</FeedContainer>
+	);
+};
 
 export default Feed;

@@ -3,8 +3,8 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-	updateSearchValue(): void;
-	onChange(): void;
+	onEnter(value: string): void;
+	onChange(value: string): void;
 }
 
 export interface SetSearchTempValueAction {

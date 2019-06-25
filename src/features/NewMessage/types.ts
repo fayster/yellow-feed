@@ -1,3 +1,3 @@
 export interface DispatchProps {
-	handleSend(text: string): void;
+	createMessage(text: string): Promise<void>;
 }

@@ -1,3 +1,5 @@
+import { RouteComponentProps } from 'react-router-dom';
+
 export interface UserInfo {
 	unique_name: string;
 	name: string;
@@ -24,3 +26,9 @@ export interface SetUserInfoAction {
 }
 
 export type Actions = SetUserInfoAction;
+
+export interface RouteParams {
+	user: string;
+}
+
+export type Props = DispatchProps & StateProps & RouteComponentProps<RouteParams>;

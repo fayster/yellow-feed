@@ -7,7 +7,7 @@ export const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
 export const SET_SEARCH_INITIAL_VALUES = 'SET_SEARCH_INITIAL_VALUES';
 
 // Reducer
-interface State {
+export interface State {
 	tempValue: string;
 	value: string;
 }

@@ -26,14 +26,13 @@ export const List = styled.ul`
 
 const Messages: React.FC<StateProps> = ({ messages }) => (
 	<>
-		{ !!messages.length && <List>
-			{ messages
-				.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-				.map(message => (
+		{ !!messages.length && (
+			<List>
+				{ messages.map(message => (
 					<Message key={ message._id } { ...message } />
-				))
-			}
-		</List> }
+				)) }
+			</List>
+		)}
 		{ !messages.length &&
 			<NotFoundContainer>
 				<SearchIconContainer>

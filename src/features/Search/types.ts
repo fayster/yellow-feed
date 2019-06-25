@@ -3,5 +3,5 @@ export interface DispatchProps {
 }
 
 export interface StateProps {
-	searchValue: string;
+	value: string;
 }

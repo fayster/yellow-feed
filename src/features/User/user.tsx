@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Messages from '../Messages';
-import { DispatchProps, StateProps } from "./types";
+import { Props } from "./types";
 import Loader from "../Loader";
 
 export const UserContainer = styled.div`
@@ -45,62 +45,37 @@ export const UserBio = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-export interface UserState {
-	user: string;
-}
+const User: React.FC<Props> = ({ isLoading, avatar, unique_name, name, description, match, getData }) => {
+	const [ userId, setUserId ] = useState(null);
+	const { user: currentUserId } = match.params;
 
-class User extends React.Component<StateProps & DispatchProps, UserState> {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			user: props.match.params.user
-		};
+	if (currentUserId !== userId) {
+		setUserId(currentUserId);
 	}
 
-	componentDidMount() {
-		this.props.getData();
-	}
+	useEffect(() => { getData(); }, [ userId ]);
 
-	static getDerivedStateFromProps(nextProps, prevState) {
-		if (nextProps.match.params.user !== prevState.user) {
-			return {
-				user: nextProps.match.params.user,
-			};
-		}
-
-		return null;
-	}
-
-	componentDidUpdate(prevProps) {
-		if (prevProps.match.params.user !== this.state.user) {
-			this.props.getData();
-		}
-	}
-
-	render() {
-		return (
-			<UserContainer>
-				{ this.props.isLoading && <Loader /> }
-				{ !this.props.isLoading &&
-					<>
-						<UserInfo>
-							<UserAvatar>
-								<img src={ this.props.avatar } />
-							</UserAvatar>
-							<UserName>
-								<Link to={`/user/${ this.props.unique_name }`}>{ this.props.name }</Link>
-							</UserName>
-							<UserBio>
-								{ this.props.description }
-							</UserBio>
-						</UserInfo>
-						<Messages />
-					</>
-				}
-			</UserContainer>
-		);
-	}
-}
+	return (
+		<UserContainer>
+			{ isLoading && <Loader /> }
+			{ !isLoading &&
+				<>
+					<UserInfo>
+						<UserAvatar>
+							<img src={ avatar } />
+						</UserAvatar>
+						<UserName>
+							<Link to={`/user/${ unique_name }`}>{ name }</Link>
+						</UserName>
+						<UserBio>
+							{ description }
+						</UserBio>
+					</UserInfo>
+					<Messages />
+				</>
+			}
+		</UserContainer>
+	);
+};
 
 export default User;

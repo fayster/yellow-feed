@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { StateProps, DispatchProps } from './types'
@@ -32,34 +32,30 @@ export const UserName = styled.div`
 	}
 `;
 
-class Users extends React.Component<StateProps & DispatchProps> {
-	componentDidMount() {
-		this.props.getUsers();
-	}
+const Users: React.FC<StateProps & DispatchProps> = (props) => {
+	useEffect(() => { props.getUsers(); }, []);
 
-	render() {
-		return (
-			<UsersContainer>
-				{ this.props.isLoading && <Loader /> }
-				{ !this.props.isLoading &&
-					<>
-						{ this.props.users.map(user =>
-							<UserContainer key={ user.unique_name }>
-								<UserAvatar>
-									<Link to={`/user/${ user.unique_name }`}>
-										<img src={ user.avatar } />
-									</Link>
-								</UserAvatar>
-								<UserName>
-									<Link to={`/user/${ user.unique_name }`}>{ user.name }</Link>
-								</UserName>
-							</UserContainer>
-						) }
-					</>
-				}
-			</UsersContainer>
-		);
-	}
-}
+	return (
+		<UsersContainer>
+			{ props.isLoading && <Loader /> }
+			{ !props.isLoading &&
+				<>
+					{ props.users.map(user =>
+						<UserContainer key={ user.unique_name }>
+							<UserAvatar>
+								<Link to={`/user/${ user.unique_name }`}>
+									<img src={ user.avatar } />
+								</Link>
+							</UserAvatar>
+							<UserName>
+								<Link to={`/user/${ user.unique_name }`}>{ user.name }</Link>
+							</UserName>
+						</UserContainer>
+					) }
+				</>
+			}
+		</UsersContainer>
+	);
+};
 
 export default Users;

@@ -48,6 +48,7 @@ export const UserAvatar = styled(Link)`
 	& > img {
 		width: 35px;
 		height: 35px;
+		border-radius: 50%;
 	}
 `;
 
@@ -79,16 +80,16 @@ export const MenuTitle = styled.span`
 	line-height: 40px;
 `;
 
-const Sidebar: React.FC<StateProps> = (props) => {
+const Sidebar: React.FC<StateProps> = ({ avatar, unique_name, name }) => {
 	return (
 		<SidebarContainer>
 			<Logo to='/'>Yellow Feed</Logo>
 			<UserPanel>
-				<UserAvatar replace to={`/user/${ props.unique_name }`}>
-					<img src={ props.avatar } alt='avatar' />
+				<UserAvatar replace to={`/user/${ unique_name }`}>
+					<img src={ avatar } alt='avatar' />
 				</UserAvatar>
-				<UserName replace to={`/user/${ props.unique_name }`}>
-					{ props.name }
+				<UserName replace to={`/user/${ unique_name }`}>
+					{ name }
 				</UserName>
 			</UserPanel>
 			<ul>

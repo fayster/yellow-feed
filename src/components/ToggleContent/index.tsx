@@ -1,8 +1,8 @@
 import React, { ReactElement, useState } from 'react';
 
 export interface Props {
-	toggle(show: () => void): void;
-	content: (hide: () => void) => ReactElement;
+	toggle(show: () => void): ReactElement;
+	content(hide: () => void): ReactElement;
 }
 
 export default ({ toggle, content }: Props) => {

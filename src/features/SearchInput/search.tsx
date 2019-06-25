@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import { DispatchProps, StateProps } from './types';
 
 export const SearchContainer = styled.div`
 	display: flex;
@@ -26,10 +27,10 @@ export const SearchContainer = styled.div`
 	}
 `;
 
-const Search: React.FC<any> = (props) => {
+const Search: React.FC<DispatchProps & StateProps> = ({ onEnter, onChange, value }) => {
 	const keyPress = (e) => {
 		if (e.key === 'Enter') {
-			props.updateSearchValue(e.target.value);
+			onEnter(e.target.value);
 		}
 	};
 
@@ -38,9 +39,9 @@ const Search: React.FC<any> = (props) => {
 			<input
 				type="text"
 				placeholder="Enter something..."
-				value={ props.value }
+				value={ value }
 				onKeyPress={ keyPress }
-				onChange={ (e) => props.onChange(e.target.value) }
+				onChange={ (e) => onChange(e.target.value) }
 			/>
 		</SearchContainer>
 	);

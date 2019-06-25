@@ -6,7 +6,7 @@ import { DispatchProps, StateProps } from './types';
 import { AppState } from "../../store/reducers";
 
 const mapStateToProps = (state: AppState): StateProps => ({
-	searchValue: state.search.value
+	value: state.search.value
 });
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
