@@ -20,7 +20,7 @@ const users = [
 	{
 		unique_name: "test",
 		name: "Test",
-		avatar: "https://cdn.icon-icons.com/icons2/1465/PNG/512/178manastronaut2_100769.png",
+		avatar: "https://pbs.twimg.com/profile_images/1137818942913875969/NB3V2-3m_400x400.png",
 		description: "Test description"
 	}
 ];
