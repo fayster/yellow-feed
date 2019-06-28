@@ -13,10 +13,11 @@ export const WrapperLayer = styled.div`
 	flex-direction: row;
 `;
 
-export default React.memo((props) =>
+const Layout: React.FC = ({ children }) =>
 	<LayoutLayer>
 		<WrapperLayer>
-			{ props.children }
+			{ children }
 		</WrapperLayer>
-	</LayoutLayer>
-);
+	</LayoutLayer>;
+
+export default Layout;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement, useCallback } from "react";
 import styled from "styled-components";
 import ToggleContent from "../../components/ToggleContent";
 import { DispatchProps } from './types';
@@ -39,13 +39,16 @@ const toggle = (show: () => void) => {
 };
 
 const NewMessage: React.FC<DispatchProps> = ({ createMessage }) => {
+	const content = useCallback((hide: () => void): ReactElement =>
+			<MessageModal hide={ hide } createMessage={ createMessage } />,
+		[]
+	);
+
 	return (
 		<Add>
 			<ToggleContent
 				toggle={ toggle }
-				content={ hide => (
-					<MessageModal hide={ hide } createMessage={ createMessage } />
-				)}
+				content={ content }
 			/>
 		</Add>
 	);

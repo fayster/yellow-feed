@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from "styled-components";
 import { DispatchProps, StateProps } from './types';
 
@@ -28,11 +28,8 @@ export const SearchContainer = styled.div`
 `;
 
 const Search: React.FC<DispatchProps & StateProps> = ({ onEnter, onChange, value }) => {
-	const keyPress = (e) => {
-		if (e.key === 'Enter') {
-			onEnter(e.target.value);
-		}
-	};
+	const onKeyPressCallback = useCallback(event => event.key === 'Enter' && onEnter(event.target.value), []);
+	const onChangeCallback = useCallback(event => onChange(event.target.value), []);
 
 	return (
 		<SearchContainer>
@@ -40,8 +37,8 @@ const Search: React.FC<DispatchProps & StateProps> = ({ onEnter, onChange, value
 				type="text"
 				placeholder="Enter something..."
 				value={ value }
-				onKeyPress={ keyPress }
-				onChange={ (e) => onChange(e.target.value) }
+				onKeyPress={ onKeyPressCallback }
+				onChange={ onChangeCallback }
 			/>
 		</SearchContainer>
 	);

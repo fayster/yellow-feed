@@ -1,7 +1,8 @@
 export interface DispatchProps {
-	getMessages(): void;
+	getMessages(searchText: string): void;
 }
 
 export interface StateProps {
 	value: string;
+	isLoading: boolean;
 }

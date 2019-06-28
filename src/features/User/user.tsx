@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Messages from '../Messages';
@@ -46,14 +46,7 @@ export const UserBio = styled.div`
 `;
 
 const User: React.FC<Props> = ({ isLoading, avatar, unique_name, name, description, match, getData }) => {
-	const [ userId, setUserId ] = useState(null);
-	const { user: currentUserId } = match.params;
-
-	if (currentUserId !== userId) {
-		setUserId(currentUserId);
-	}
-
-	useEffect(() => { getData(); }, [ userId ]);
+	useEffect(() => { getData(match.params.user); }, [ match.params.user ]);
 
 	return (
 		<UserContainer>

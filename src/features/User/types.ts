@@ -17,7 +17,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-	getData(): void;
+	getData(useId: string): void;
 }
 
 export interface SetUserInfoAction {

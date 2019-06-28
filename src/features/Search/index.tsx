@@ -6,11 +6,12 @@ import { DispatchProps, StateProps } from './types';
 import { AppState } from "../../store/reducers";
 
 const mapStateToProps = (state: AppState): StateProps => ({
-	value: state.search.value
+	value: state.search.value,
+	isLoading: state.isLoading,
 });
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
-	getMessages: () => dispatch(getMessages())
+	getMessages: (value: string) => dispatch(getMessages(value))
 });
 
 export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(Search);

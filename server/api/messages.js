@@ -30,7 +30,7 @@ module.exports = () => {
 
 	messages.get('/:authorId', asyncMiddleware(async (req, res) => {
 		const authorId = req.params.authorId;
-		const messages = await MessageModel.find({ authorId }).sort({createdAt: -1});
+		const messages = await MessageModel.find({ authorId }).sort({ createdAt: -1 });
 
 		// delay imitation
 		setTimeout(() => {

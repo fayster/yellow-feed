@@ -13,7 +13,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch, props): DispatchProps => ({
-	getData: () => dispatch(getData(props.match.params.user))
+	getData: (userId: string) => dispatch(getData(userId))
 });
 
 export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(User);

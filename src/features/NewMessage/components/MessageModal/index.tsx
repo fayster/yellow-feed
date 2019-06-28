@@ -83,8 +83,8 @@ const MessageModal: React.FC<Props> = ({ hide, createMessage }) => {
 			{ !isLoading && (
 				<>
 					<Body>
-					<TextArea value={ value } onChange={ handleChange } />
-					<RemainingCircle count={ value.length } maxCount={ maxCount } />
+						<TextArea value={ value } onChange={ handleChange } />
+						<RemainingCircle count={ value.length } maxCount={ maxCount } />
 					</Body>
 					<Footer>
 						<Button disabled={ isDisabled } onClick={ onClick }>

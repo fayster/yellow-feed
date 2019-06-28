@@ -32,7 +32,7 @@ const Messages: React.FC<StateProps> = ({ messages }) => (
 					<Message key={ message._id } { ...message } />
 				)) }
 			</List>
-		)}
+		) }
 		{ !messages.length &&
 			<NotFoundContainer>
 				<SearchIconContainer>

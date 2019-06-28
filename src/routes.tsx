@@ -13,9 +13,9 @@ const Routes: React.FC = () =>
 		<Body>
 			<Switch>
 				<Route exact path="/" component={ Feed } />
-				<Route path="/user/:user" component={ props => <User {...props} /> } />
+				<Route path="/user/:user" component={ User } />
 				<Route exact path="/users" component={ Users } />
-				<Route path="/search" component={ Search } />
+				<Route exact path="/search" component={ Search } />
 				<Route path="*" render={() => <div>Page Not Found</div>} />
 			</Switch>
 		</Body>
